@@ -4,7 +4,9 @@
 struct test{
   char first;
   short second;
-  char* third;
+  int third;
+  char fourth;
+  char* fifth;
 };
 
 int main(int argc, char *argv[])
