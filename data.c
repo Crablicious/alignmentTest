@@ -3,7 +3,8 @@
 
 struct test{
   char first;
-  char* second;
+  short second;
+  char* third;
 };
 
 int main(int argc, char *argv[])
