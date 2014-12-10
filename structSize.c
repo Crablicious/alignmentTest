@@ -82,6 +82,7 @@ size_t structSizeFromString(char *layout) {
     }
     if(res % align != 0){
         res += align - res % align;
+        puts("THIS RUNS");
     }
     return res;
 }
@@ -91,6 +92,7 @@ int main(int argc, char *argv[])
     char *string = malloc(10);
     string = "cli";
     size_t test = structSizeFromString(string);
+    
     printf("Size is: %d \n", (int)sizeof(struct test));
 
     string = "*cildf";
