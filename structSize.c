@@ -13,7 +13,13 @@ size_t max(size_t a, size_t b){
   if(a>b) return a;
   return b;
 }
+/* This implementation will work for x86 32 bit and 64 bit computers, but will need 8 bytes alignment on 32 bit SPARC. */
 
+/* SPARCen fuckar bara om den har en strukt med doubles. Annars funkar den här implementationen bra.
+
+   Vi skulle kunna göra ett specialfall för double isåfall så att strukten då läggs på 8 byte alignat minne. */
+
+/* Den här funktionen löser padding mellan objekt och efter objekt, men den antar att det är alignat innan. */
 size_t structSizeFromString(char *layout) {
   size_t res = 0;
   size_t align = 1; //Largest alignment.
@@ -75,11 +81,11 @@ size_t structSizeFromString(char *layout) {
 int main(int argc, char *argv[])
 {
   char *string = malloc(10);
-  string = "cdic*";
+  string = "cli";
   size_t test = structSizeFromString(string);
   printf("Size is: %d \n", (int)test);
 
-  string = "cdi";
+  string = "cfi";
   test = structSizeFromString(string);
   printf("Size is: %d \n", (int)test);
   return 0;
