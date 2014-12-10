@@ -63,9 +63,14 @@ size_t structSizeFromString(char *layout) {
         case 'd':
             if(isLittle() && res % sizeof(void*) != 0){
                 res += sizeof(void*) - res % sizeof(void*);
-                align = max(align, sizeof(void*));
+                
             }else if(res % sizeof(double) != 0){
                 res += sizeof(double) - res % sizeof(double);
+            }
+            
+            if(isLittle()){
+                align = max(align, sizeof(void*));
+            }else{
                 align = max(align, sizeof(double));
             }
             res += sizeof(double);
