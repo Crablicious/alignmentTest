@@ -4,6 +4,14 @@
 #include <math.h>
 #include <string.h>
 
+struct test{
+    void* a;
+    int b;
+    long c;
+    double adf;
+    float adsf;
+};
+
 size_t isLittle(void){
     unsigned int x = 1;
     return (int) (((char *)&x)[0]);
@@ -83,10 +91,10 @@ int main(int argc, char *argv[])
     char *string = malloc(10);
     string = "cli";
     size_t test = structSizeFromString(string);
-    printf("Size is: %d \n", (int)test);
+    printf("Size is: %d \n", (int)sizeof(struct test));
 
-    string = "cfi";
+    string = "*cildf";
     test = structSizeFromString(string);
-    printf("Size is: %d \n", (int)sizeof(void*));
+    printf("Size is: %d \n", (int)test);
     return 0;
 }
