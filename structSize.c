@@ -80,7 +80,7 @@ size_t structSizeFromString(char *layout) {
         }
         i++;
     }
-    printf("Res: %d \n", (int)align);
+    printf("Res: %d \n", (int)sizeof(double));
     if(res % align != 0){
         res += align - res % align;
         puts("THIS RUNS");
