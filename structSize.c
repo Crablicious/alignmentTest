@@ -5,11 +5,7 @@
 #include <string.h>
 
 struct test{
-    void* a;
-    int b;
-    long c;
     double adf;
-    float adsf;
 };
 
 size_t isLittle(void){
@@ -95,14 +91,28 @@ size_t structSizeFromString(char *layout) {
 
 int main(int argc, char *argv[])
 {
-    char *string = malloc(10);
-    string = "cli";
-    size_t test = structSizeFromString(string);
+    /* char *string = malloc(10); */
+    /* string = "cli"; */
+    /* size_t test = structSizeFromString(string); */
     
-    printf("Size is: %d \n", (int)sizeof(struct test));
+    /* printf("Size is: %d \n", (int)sizeof(struct test)); */
 
-    string = "*cildf";
-    test = structSizeFromString(string);
-    printf("Size is: %d \n", (int)test);
+    /* test = structSizeFromString(string); */
+    /* printf("Size is: %d \n", (int)test); */
+    struct test dob;
+    dob.adf = 12.23;
+
+    char *woop = malloc(128);
+    printf("Original start: %zu \n", (size_t)woop);
+    
+    
+    if ((size_t)woop % 8 == 0){
+        woop = (char*)((size_t)woop + 4);
+    }
+    printf("New start: %zu \n", (size_t)woop);
+    *(struct test*)woop = dob;
+
+    printf("New start: %zu \n", (size_t)woop);
+
     return 0;
 }
