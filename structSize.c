@@ -5,6 +5,7 @@
 #include <string.h>
 
 struct test{
+    int k;
     double adf;
 };
 
@@ -101,7 +102,7 @@ int main(int argc, char *argv[])
     /* printf("Size is: %d \n", (int)test); */
     struct test dob;
     dob.adf = 12.23;
-
+    dob.k = 5;
     char *woop = malloc(128);
     printf("Original start: %zu \n", (size_t)woop);
     
