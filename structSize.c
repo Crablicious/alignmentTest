@@ -100,9 +100,10 @@ int main(int argc, char *argv[])
 
     /* test = structSizeFromString(string); */
     /* printf("Size is: %d \n", (int)test); */
-    struct test dob;
-    dob.adf = 12.23;
-    dob.k = 5;
+    //struct test dob;
+    //dob.adf = 12.23;
+    //dob.k = 5;
+    double dob = 12.23;
     char *woop = malloc(128);
     printf("Original start: %zu \n", (size_t)woop);
     
@@ -111,7 +112,7 @@ int main(int argc, char *argv[])
         woop = (char*)((size_t)woop + 4);
     }
     printf("New start: %zu \n", (size_t)woop);
-    *(struct test*)woop = dob;
+    *(double*)woop = dob;
 
     printf("New start: %zu \n", (size_t)woop);
 
